@@ -25,6 +25,10 @@ app.use(
 );
 app.use(express.json());
 
+app.get("/",(req,res)=>{
+  res.json({type:"success"})
+})
+
 app.post("/contact", (req, res) => {
   const { name, email, message } = req.body;
   const data = {
