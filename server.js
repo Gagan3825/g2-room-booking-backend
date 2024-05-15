@@ -12,6 +12,7 @@ const sendmail = require("./contactus/mailer");
 const cors = require("cors");
 const { error } = require("console");
 
+
 const port=process.env.PORT || 4001
 
 const clientid = process.env.CLIENT_ID;
@@ -26,6 +27,10 @@ app.use(
   })
 );
 app.use(express.json());
+
+app.get("/",(req,res)=>{
+  res.json({type:"success"})
+})
 
 app.post("/contact", (req, res) => {
   const { name, email, message } = req.body;
@@ -47,6 +52,7 @@ app.post("/contact", (req, res) => {
     }
   });
 });
+
 
 app.post("/register", async (req, res) => {
   const body = req.body;
