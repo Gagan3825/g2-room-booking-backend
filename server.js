@@ -12,6 +12,8 @@ const sendmail = require("./contactus/mailer");
 const cors = require("cors");
 const { error } = require("console");
 
+const port=process.env.PORT || 4001
+
 const clientid = process.env.CLIENT_ID;
 const clientsecret = process.env.CLIENT_SECRET;
 const frontid=process.env.FRONTEND_ID
@@ -24,10 +26,6 @@ app.use(
   })
 );
 app.use(express.json());
-
-app.get("/",(req,res)=>{
-  res.json({type:"success"})
-})
 
 app.post("/contact", (req, res) => {
   const { name, email, message } = req.body;
@@ -198,4 +196,4 @@ app.post("/firebase/login", async (req, res) => {
 });
 
 
-app.listen(4001, () => "Server is listening on port no: 4001");
+app.listen(port, () => "Server is listening on port no:",port);
